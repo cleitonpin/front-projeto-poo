@@ -1,0 +1,29 @@
+#container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: '#bbe1fa';
+    background: '#dd2ddd';
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+form {
+    max-width: 330px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-color: rgb(8, 8, 8);
+    border-radius: 6px;
+    margin: 30px auto;
+}
+
+.mb-2 {
+    display: inline;
+  
+}

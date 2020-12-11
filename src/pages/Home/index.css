@@ -1,0 +1,37 @@
+#navbarmy img {
+    border-radius: 12px;
+    margin-right: 1rem;
+    padding: 0;
+    
+}
+
+#navbarmy  {
+    display: flex;
+}
+
+.lim {
+    padding: 5px 0;
+    margin-right: 16px;
+}
+
+.lim ul {
+    padding:0px;
+    margin:0px;
+    background-color:#EDEDED;
+    list-style:none;
+}
+
+.lim ul li {
+    display: inline-block;
+}
+
+.lim ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+
+    /* visual do link */
+    background-color:#EDEDED;
+    color: #333;
+    text-decoration: none;
+    border-bottom:3px solid #EDEDED;
+}

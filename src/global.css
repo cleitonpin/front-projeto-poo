@@ -1,0 +1,12 @@
+
+
+a {
+    color: var(--color-text-title);
+    font-size: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
