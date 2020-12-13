@@ -12,16 +12,17 @@
 .lim {
     padding: 5px 0;
     margin-right: 16px;
+    text-align: right;
 }
 
 .lim ul {
     padding:0px;
     margin:0px;
-    background-color:#EDEDED;
     list-style:none;
 }
 
 .lim ul li {
+    text-align: end;
     display: inline-block;
 }
 
@@ -30,8 +31,120 @@
     display: inline-block;
 
     /* visual do link */
-    background-color:#EDEDED;
+
     color: #333;
     text-decoration: none;
-    border-bottom:3px solid #EDEDED;
+
+}
+
+.init {
+    padding: 10rem
+}
+
+.init p {
+    font-size: 20px;
+}
+
+.init a {
+    cursor: pointer;
+    border: 1px solid #0550a0;
+    -webkit-box-shadow: 0 2px 8px 0 rgba(38,48,60,.2);
+    box-shadow: 0 2px 8px 0 rgba(38,48,60,.2);
+    border-radius: 5px;
+    padding: 20px 32px;
+    font-size: 14px;
+    color: #0550a0;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    background: transparent;
+    text-decoration: none;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    outline: none;
+    -webkit-box-sizing: border-box;
+}
+
+.init a:hover {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.form-carga {
+    padding: 15px;
+    border: 1px solid grey;
+    border-color:  #cfbebe;
+    border-radius: 6px;
+    margin: 30px auto;
+}
+
+.form-carga h2 {
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-color: #6d6666;
+    margin-bottom: 15px;
+}
+
+.inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inline label {
+    padding: 0 10.5px;
+}
+
+.center-align {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.transportadora h2 {
+    text-align: center;
+}
+
+.transportadora {
+    padding: 15px;
+    border: 1px solid grey;
+    border-color:  #cfbebe;
+    border-radius: 6px;
+    margin: 30px auto;
+}
+
+.badge {
+    min-width: 3rem;
+    padding: 0 6px;
+    margin-left: 14px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 22px;
+    height: 22px;
+    color: #757575;
+    float: right;
+    box-sizing: border-box;
+}
+
+.cidades {
+    margin: .5rem 0 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cidades a.collection-item {
+    display: block;
+    transition: .25s;
+    color: #f37920;
+}
+
+.cidades .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
 }
