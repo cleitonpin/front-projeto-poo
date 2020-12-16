@@ -20,7 +20,7 @@ export default function User() {
         })
         const { status } = await res;
 
-        if (status == 200) {
+        if (status === 200) {
             return history.push('/login');
         }
         return history.push('/register');

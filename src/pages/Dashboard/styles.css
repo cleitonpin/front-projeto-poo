@@ -24,3 +24,30 @@
 .img-person {
     width: 40px;
 }
+
+.my-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.infos {
+    padding: 15px;
+    border: 1px solid grey;
+    border-color:  #cfbebe;
+    border-radius: 6px;
+    margin: 30px auto;
+}
+
+.infos h5 {
+
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #b1a6a6;
+}
+
+.infos h3 {
+    margin-top: 15px;
+    padding: 5rem;
+}
+

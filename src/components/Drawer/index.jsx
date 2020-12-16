@@ -37,8 +37,22 @@ export default function MyDrawerList() {
 					button
 					onClick={() => handleLinkURL('/dashboard')}
 				>
-					<ListItemIcon><DashboardIcon /></ListItemIcon>
+					<ListItemIcon><DashboardIcon /> </ListItemIcon>
 					<ListItemText primary="Dashboard" />
+				</ListItem>
+				<ListItem
+					button
+					onClick={() => handleLinkURL('/')}
+				>
+					<ListItemIcon><DashboardIcon /> </ListItemIcon>
+					<ListItemText primary="Cotações de Frete" />
+				</ListItem>
+				<ListItem
+					button
+					onClick={() => handleLinkURL('/ambiente')}
+				>
+					<ListItemIcon><DashboardIcon /> </ListItemIcon>
+					<ListItemText primary="Configurações" />
 				</ListItem>
 			</List>
 		</div>

@@ -1,49 +1,35 @@
-import { Drawer } from '@material-ui/core';
-import React from 'react';
-import MyDrawerList from '../../components/Drawer';
-import { UserLogin } from '../../contexts/auth';
 
-import IconPerson from './2.png';
+import React, { useEffect } from 'react';
+
+
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+
 import './styles.css';
+import { Link } from 'react-router-dom';
+import NavDash from '../../components/NavDash';
+import api from '../../services/api';
 
 export default function Dashboard() {
 
+    useEffect(() => {
+        const res = api.get('/empresa/ambiente');
+    }, [])
+
     return (
-        <div className="container">
-            <Drawer
-                anchor="left"
-                open={true}
-                onClose={false}
-            >
-                <MyDrawerList />
-            </Drawer>
-            <nav className="navbar navbar-expand-bg navbar-light bg-light">
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <a className="navbar-brand" href="#">Navbar</a>
+        <div>
+           
+            <NavDash />
+            <div className="my-profile">
+                <div className="infos">
+                    <h5>
+                        <AccountBoxIcon /> MEU PERFIL
+                    </h5>
 
-            <div className="dash" id="navbarNav">
-                <ul>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Cotações de Frete</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Transportadoras</a>
-                    </li>
-                    <li className="nav-item">
-                        <img className="img-person" src={IconPerson} alt=""/>
-                    </li>
-                </ul>
-            </div>
-
-            </nav>
-            <div className="post-f-t">
-                <div className="collapse">
-                    <div className="bg-dark p-4">
-                        <h4>OPCOES</h4>
-                        <span className="text-muted"></span>
-                    </div>
+                    <h3>
+                        Os dados da empresa ainda não estão configurados. <br/>
+                        Atualize agora o seu cadastro e crie o seu perfil para este ambiente.
+                    </h3>
+                    <Link className="btn btn-primary center-align" to="/ambiente">Criar perfil</Link>
                 </div>
             </div>
 
