@@ -33,7 +33,7 @@ export default function Transportadora() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Sua empresa é</label>
-                    <select name="setor" class="form-control" required="">
+                    <select name="setor" className="form-control" required="">
                         <option value="">Selecione</option>
                         <option value="Não tem empresa">Não tem empresa</option>
                         <option value="Autônomo">Autônomo</option>

@@ -10,7 +10,7 @@ export default function Home() {
         <div className="container">
             <nav id="navbarmy">
                 <a className="navbar-brand" href="/">
-                    <img src={Rengato} width="30" height="30" class="d-inline-block align-top" alt=""/>
+                    <img src={Rengato} width="30" height="30" className="d-inline-block align-top" alt=""/>
                     Melhor Envio
                 </a>
     

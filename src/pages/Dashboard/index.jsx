@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { UserLogin } from '../../contexts/auth';
 
 import IconPerson from './2.png';
 import './styles.css';
 
 export default function Dashboard() {
+
+    const { user } = UserLogin();
+    useEffect(() => {
+        console.log(user);
+    }, [])
     return (
         <div className="container">
             <nav className="navbar navbar-expand-bg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a className="navbar-brand" href="#">Navbar</a>
 
             <div className="dash" id="navbarNav">
                 <ul>
