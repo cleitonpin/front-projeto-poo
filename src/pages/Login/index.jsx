@@ -1,8 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { Form, Button, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserLogin } from '../../contexts/auth'
-
 import './index.css';
 
 export default function Login() {
@@ -19,40 +17,40 @@ export default function Login() {
     }
 
     return (
-        <div className="container">
-            <div className="box">
-                <Form onSubmit={handleSubmit}>
-                    <Form.Row className="align-items-center">
-                        <Col xs="auto">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control 
-                                className="mb-2" 
-                                type="text" 
-                                placeholder="Enter a username" 
-                                onChange={e => setUser(e.target.value)} 
-                                value={user}
+        
+        <div className="box">
+            <form onSubmit={handleSubmit} className="form-login">
+                <div className="form-group">
+                    <label>Username</label>
+                    <input 
+                        className="form-control" 
+                        type="text" 
+                        placeholder="Seu úsuario" 
+                        onChange={e => setUser(e.target.value)} 
+                        value={user}
+                    /> 
+                </div> 
+
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input 
+                            className="form-control" 
+                            type="password" 
+                            onChange={e => setPassword(e.target.value)} 
+                            value={password}
                             />
-                        </Col>
-
-                        <Col xs="auto">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control 
-                                className="mb-2" 
-                                type="password" 
-                                placeholder="Enter a pass"
-                                onChange={e => setPassword(e.target.value)} 
-                                value={password}
-                                />
-                        </Col>
-
-                        <Col xs="auto">
-                            <Button variant="primary" type="submit" className="mb-2 husb">
-                                Submit
-                            </Button>
-                        </Col>
-                    </Form.Row>
-                </Form>
-            </div>
+                    </div> 
+                <div className="panel-buttons">
+                    <button type="submit"  className="btn btn-primary">
+                        Entrar
+                    </button>
+                    {'\u200b'}
+                    <a href="/register" className="btn btn-primary">
+                        Registrar
+                    </a>
+                </div>
+            </form>
         </div>
+    
     )
 }

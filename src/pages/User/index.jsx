@@ -1,47 +1,70 @@
-import React, { useContext } from 'react';
-import { Form, Button, Col } from 'react-bootstrap';
-import AuthContext from '../../contexts/auth'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../../services/api';
 
 import './index.css';
 
 export default function User() {
 
-    const context = useContext(AuthContext);
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const history = useHistory();
 
-    
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(await context.Login());
+        const res = api.post('/user', {
+            nome: name,
+            username,
+            senha: password
+        })
+        const { status } = await res;
+
+        if (status == 200) {
+            return history.push('/login');
+        }
+        return history.push('/register');
     }
 
     return (
         <div className="container">
             <div className="box">
-                <Form onSubmit={handleSubmit}>
-                    <Form.Row className="align-items-center">
-                        <Col xs="auto">
-                            <Form.Label>Nome</Form.Label>
-                            <Form.Control className="mb-2" type="text" placeholder="Enter a name" />
-                        </Col>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Nome</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Seu Nome"
+                            onChange={e => setName(e.target.value)}
+                            value={name}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Nome de úsuario"
+                            onChange={e => setUsername(e.target.value)}
+                            value={username}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            className="form-control"
+                            type="password"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">
+                        Registrar
+                    </button>
 
-                        <Col xs="auto">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control className="mb-2" type="text" placeholder="Enter a username" />
-                        </Col>
 
-                        
-                        <Col xs="auto">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control className="mb-2" type="password" placeholder="Enter a password" />
-                        </Col>
-
-                        <Col xs="auto">
-                            <Button variant="primary" type="submit" className="mb-2 husb">
-                                Submit
-                            </Button>
-                        </Col>
-                    </Form.Row>
-                </Form>
+                </form>
             </div>
         </div>
     )

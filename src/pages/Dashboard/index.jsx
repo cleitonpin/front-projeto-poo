@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import { Drawer } from '@material-ui/core';
+import React from 'react';
+import MyDrawerList from '../../components/Drawer';
 import { UserLogin } from '../../contexts/auth';
 
 import IconPerson from './2.png';
@@ -6,12 +8,15 @@ import './styles.css';
 
 export default function Dashboard() {
 
-    const { user } = UserLogin();
-    useEffect(() => {
-        console.log(user);
-    }, [])
     return (
         <div className="container">
+            <Drawer
+                anchor="left"
+                open={true}
+                onClose={false}
+            >
+                <MyDrawerList />
+            </Drawer>
             <nav className="navbar navbar-expand-bg navbar-light bg-light">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

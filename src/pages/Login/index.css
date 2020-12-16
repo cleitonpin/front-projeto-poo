@@ -14,16 +14,17 @@
 }
 
 
-/* form {
-    max-width: 330px;
+.box {
     padding: 15px;
-    border: 1px solid grey;
-    border-color: rgb(8, 8, 8);
-    border-radius: 6px;
-    margin: 30px auto;
-} */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
 
-.mb-2 {
-    display: inline;
-  
+.form-login {
+    text-align: center;
+    border: 1px solid  #cfbebe;
+    width: 25%;
+    border-radius: 6px;
+    padding: 15px;
 }
