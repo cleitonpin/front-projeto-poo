@@ -6,15 +6,16 @@ import { paises } from './paises';
 import './styles.css';
 import api from '../../services/api';
 import NavDash from '../../components/NavDash';
+import { useHistory } from 'react-router-dom';
 
 export default function Ambiente() {
 
-    const [nome, setNome] = useState('');
+    const [nome_social, setNome] = useState('');
     const [sigla, setSigla] = useState('');
-    const [nomeFantasia, setNomeFantasia] = useState('');
+    const [nome_fantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [email, setEmail] = useState('');
-    const [ie, setIe] = useState('');
+    const [inscricao_estadual, setIe] = useState('');
     // enredeco
     const [cep, setCep] = useState('');
     const [pais, setPais] = useState('');
@@ -25,6 +26,7 @@ export default function Ambiente() {
     const [complemento, setComplemento] = useState('');
     const [numero, setNumero] = useState('');
 
+    const history = useHistory();
     function pesquisaCep() {
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
         .then(res => res.json())
@@ -36,16 +38,16 @@ export default function Ambiente() {
         });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        api.post('/empresa/transporte', {
-            nome_social: nome,
+        const { status } = await api.post('/empresa/transporte', {
+            nome_social,
             sigla,
-            nome_fantasia: nomeFantasia,
+            nome_fantasia,
             cnpj,
             email,
-            inscricao_estadual: ie,
+            inscricao_estadual,
             pais,
             uf,
             municipio,
@@ -53,8 +55,11 @@ export default function Ambiente() {
             complemento,
             logradouro,
             numero
-        })
-        
+        });
+
+        if (status === 200) {
+            history.push('/dashboard');
+        }
     }
 
     return (
@@ -66,15 +71,15 @@ export default function Ambiente() {
                     <div className="form-group div-flex">
                         <div className="mr-2">
                             <label htmlFor="">Nome</label>
-                            <input onChange={e => setNome(e.target.value)} value={nome} type="text" className="form-control" placeholder="NOME EMPRESA LTDA"/>
+                            <input onChange={e => setNome(e.target.value)} value={nome_social} type="text" className="form-control" placeholder="NOME EMPRESA LTDA"/>
                         </div>
                         <div className="mr-2">
                             <label htmlFor="">SIGLA</label>
-                            <input onChange={e => setSigla(e.target.value)} value={sigla} type="text" className="form-control" placeholder="REC"/>
+                            <input maxLength="3" onChange={e => setSigla(e.target.value)} value={sigla} type="text" className="form-control" placeholder="REC"/>
                         </div>
                         <div>
                             <label htmlFor="">Nome Fantasia</label>
-                            <input onChange={e => setNomeFantasia(e.target.value)} value={nomeFantasia} type="text" className="form-control" placeholder="NOME FANTASIA EMPRESA"/>
+                            <input onChange={e => setNomeFantasia(e.target.value)} value={nome_fantasia} type="text" className="form-control" placeholder="NOME FANTASIA EMPRESA"/>
                         </div>
                     </div>
                
@@ -98,7 +103,7 @@ export default function Ambiente() {
                     <div className="form-group div-flex">
                         <div className="mr-2">
                             <label htmlFor="">Inscrição estadual</label>
-                            <input onChange={e => setIe(e.target.value)} value={ie} type="text" className="form-control" placeholder="NOME FANTASIA EMPRESA"/>
+                            <input onChange={e => setIe(e.target.value)} value={inscricao_estadual} type="text" className="form-control" placeholder="NOME FANTASIA EMPRESA"/>
                         </div>
                         <div className="mr-2">
                             <label htmlFor="">CEP</label>
@@ -106,8 +111,8 @@ export default function Ambiente() {
                         </div>
                         <div>
                             <label htmlFor="">País</label>
-                            <select className="custom-select mr-sm-2">
-                                {paises.map((listCountry, key) => <option key={key} onChange={e => setPais(e.target.value)} value={pais}>{listCountry.nome_pais}</option>)}
+                            <select className="custom-select mr-sm-2" onChange={e => setPais(e.target.value)}>
+                                {paises.map((listCountry, key) => <option key={key} value={pais}>{listCountry.nome_pais}</option>)}
                             </select>
                         </div>
                     </div>

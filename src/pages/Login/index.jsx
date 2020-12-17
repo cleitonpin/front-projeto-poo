@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserLogin } from '../../contexts/auth'
 import './index.css';
 
@@ -41,13 +41,12 @@ export default function Login() {
                             />
                     </div> 
                 <div className="panel-buttons">
-                    <button type="submit"  className="btn btn-primary">
+                    <button type="submit"  className="btn btn-primary mr-2">
                         Entrar
                     </button>
-                    {'\u200b'}
-                    <a href="/register" className="btn btn-primary">
+                    <Link to="/register" className="btn btn-primary">
                         Registrar
-                    </a>
+                    </Link>
                 </div>
             </form>
         </div>

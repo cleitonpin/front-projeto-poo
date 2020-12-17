@@ -7,14 +7,13 @@ import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import User from './pages/User'
-import MyAppBar from './pages/Teste'
 import Transportadora from './pages/Transregi'
 import Transportadoras from './pages/Transportadoras'
 import FormAmbiente from './pages/FormAmbiente'
 
 export default function Routes() {
     const { signed } = useContext(AuthContext);
-    console.log(signed);
+
     return (
         <BrowserRouter>
             <Switch>

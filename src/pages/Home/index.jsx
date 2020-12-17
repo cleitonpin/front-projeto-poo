@@ -31,7 +31,7 @@ export default function Home() {
     async function handleSubmit(e) {
         e.preventDefault();
        
-        const res = api.post('/carga', {
+        const { status } = await api.post('/carga', {
             endereco,
             cep_origem: cepOrigem,
             cep_dest: cepDestino,
@@ -43,8 +43,6 @@ export default function Home() {
             peso,
             tipo_carga: tipoCarga
         });
-
-        const { status } = res;
 
         if (status === 200) {
             history.push('/transportadoras')

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
-import 'react-toastify/dist/ReactToastify.min.css'; 
+
 
 import './index.css';
 
@@ -15,10 +15,10 @@ export default function Transportadora() {
     const [tipoEmpresa, setTipoEmpresa] = useState('');
     const history = useHistory();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        api.post('/transportadora', {
+        const { status } = await api.post('/transportadora', {
             nome,
             email,
             telefone,
@@ -26,8 +26,11 @@ export default function Transportadora() {
             ctes_por_mes: mediaCte,
             tipo_empresa: tipoEmpresa
         });
-
-        history.push('/ambiente/register');
+        
+        if (status === 200) {
+            return history.push('/ambiente/register');
+        }
+        throw new Error;
     }
 
 
@@ -54,10 +57,10 @@ export default function Transportadora() {
                 <div className="form-group">
                     <label htmlFor="">Média de CTes emitidos por mês *</label>
                     <select onChange={e => setMediaCte(e.target.value)} value={mediaCte} name="" id="" className="form-control">
-                        <option value="">1 a 5</option>
-                        <option value="">6 a 30</option>
-                        <option value="">101 a 500</option>
-                        <option value="">Acima de 500</option>
+                        <option value="1 a 5">1 a 5</option>
+                        <option value="6 a 30">6 a 30</option>
+                        <option value="101 a 500">101 a 500</option>
+                        <option value="Acima de 500">Acima de 500</option>
                     </select>
                 </div>
                 <div className="form-group">

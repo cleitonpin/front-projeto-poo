@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Rengato from '../../assets/rengato.png';
 import AuthContext from '../../contexts/auth';
 
@@ -9,7 +9,13 @@ import './style.css';
 export default function Navbar() {
 
     const { Logout } = useContext(AuthContext);
-    
+    const history = useHistory();
+
+    function logout() {
+        Logout();
+        history.push('/login');
+    }
+
     return (
         <nav id="navbarmy">
             <Link className="navbar-brand nav-link" to="/">
@@ -27,7 +33,7 @@ export default function Navbar() {
                         <Link className="nav-link" to="/transportadora">Cadastre sua transportadora</Link>
                     </li>
                     <li className="nav-item">
-                        <button className="btn btn-primary" onClick={Logout}>Logout</button>
+                        <button className="btn btn-primary" onClick={logout} >Logout</button>
                     </li>
                     
                 </ul>

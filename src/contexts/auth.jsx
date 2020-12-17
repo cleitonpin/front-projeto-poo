@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 
 const AuthContext = createContext({});
@@ -12,13 +11,13 @@ export const UserLogin = () => {
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState([]);
-    const [signed, setSigned] = useState(true);
-    const history = useHistory();
-    localStorage.setItem('@App:user', JSON.stringify([{nome: 'cleion'}]))
+    const [signed, setSigned] = useState(false);
+
     useEffect(() => {
         const storagedUser = localStorage.getItem('@App:user');
 
-        if (storagedUser) {
+        if (storagedUser != undefined) {
+            
             setUser(JSON.parse(storagedUser));
             setSigned(true);
         } else {
@@ -28,21 +27,19 @@ export const AuthProvider = ({ children }) => {
 
     async function Login(username, password) {
     
-        const response = await api.get('/user');
-        const { data } = response;
-        const found = data.find(users => users.username === username && users.senha === password);
-  
-        localStorage.setItem('@App:user', JSON.stringify(found));
+        const { data } = await api.post('/user/login', {
+            username,
+            senha: password
+        });
 
-        setUser(found);
+        localStorage.setItem('@App:user', JSON.stringify(data));
+        setUser(data);
         setSigned(true);
-    
-
     }
 
     function Logout() {
-        history.push('/login');
         localStorage.removeItem('@App:user');
+        setSigned(false);
     }
 
     return (
